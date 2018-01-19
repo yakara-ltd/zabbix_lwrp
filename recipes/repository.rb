@@ -46,7 +46,7 @@ when 'debian'
   package 'apt-transport-https'
 
   apt_repository 'zabbix-official' do
-    uri "https://repo.zabbix.com/zabbix/#{node['zabbix']['version']}/ubuntu/"
+    uri "https://repo.zabbix.com/zabbix/#{node['zabbix']['version']}/#{node['platform']}/"
     distribution node['lsb']['codename']
     components ['main']
     key 'https://repo.zabbix.com/zabbix-official-repo.key'
