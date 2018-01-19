@@ -1,40 +1,6 @@
 case node['platform_family']
 when 'debian'
   include_recipe 'apt'
-when 'rhel'
-  include_recipe 'selinux_policy::install'
-
-  selinux_policy_boolean 'httpd_can_network_connect' do
-    value true
-  end
-  selinux_policy_module 'zabbix_agent_setrlimit' do
-    content <<-eos
-      module zabbix_agent_setrlimit 1.0;
-
-      require {
-        type zabbix_agent_t;
-        class process setrlimit;
-      }
-
-      #============= zabbix_agent_t ==============
-      allow zabbix_agent_t self:process setrlimit;
-    eos
-    action :deploy
-  end
-  selinux_policy_module 'zabbix_server_setrlimit' do
-    content <<-eos
-      module zabbix_server_setrlimit 1.0;
-
-      require {
-        type zabbix_t;
-        class process setrlimit;
-      }
-
-      #============= zabbix_agent_t ==============
-      allow zabbix_t self:process setrlimit;
-    eos
-    action :deploy
-  end
 end
 include_recipe 'chef_nginx::default'
 

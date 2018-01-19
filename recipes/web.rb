@@ -22,6 +22,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+extend SELinuxPolicy::Helpers
+include_recipe 'selinux_policy::install' if use_selinux
+
+selinux_policy_boolean 'httpd_can_network_connect' do
+  value true
+end
+
 include_recipe 'php-fpm'
 include_recipe 'chef_nginx::default'
 
