@@ -1,4 +1,5 @@
 default['zabbix']['server']['web']['server_name'] = 'localhost'
+default['zabbix']['server']['web']['proxy_listen'] = '80'
 default['zabbix']['server']['web']['listen'] = node['php-fpm']['listen'].gsub(/%{pool_name}/, 'zabbix')
 
 default['zabbix']['server']['web']['max_requests'] = 500

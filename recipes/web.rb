@@ -62,6 +62,7 @@ chef_nginx_site node['zabbix']['server']['web']['server_name'] do
   template 'zabbix-site.conf.erb'
   variables(
     server_name: node['zabbix']['server']['web']['server_name'],
+    proxy_listen: node['zabbix']['server']['web']['proxy_listen'],
     fastcgi_listen: fastcgi_listen
   )
 end
