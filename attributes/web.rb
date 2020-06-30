@@ -19,3 +19,12 @@ default['zabbix']['server']['web']['configuration']['php_admin_value[memory_limi
 default['zabbix']['server']['web']['configuration']['php_admin_value[post_max_size]'] = '32M'
 default['zabbix']['server']['web']['configuration']['php_admin_flag[register_globals]'] = true
 default['nginx']['default_site_enabled'] = false
+
+#For CentOS Hosts, due to lack of newer releases on CentOS Repos
+default['yum']['remi-php73']['managed'] = true
+default['yum']['remi-php73']['repositoryid'] = 'remi-php74'
+default['yum']['remi-php73']['mirrorlist'] = 'http://cdn.remirepo.net/enterprise/7/php74/mirror'
+default['yum']['remi-php73']['description'] = "Remi's PHP 7.4 RPM repository for Enterprise Linux 7 - $basearch"
+default['yum']['remi-php73']['enabled'] = true
+default['yum']['remi-php73']['gpgcheck'] = true
+default['yum']['remi-php73']['gpgkey'] = 'http://cdn.remirepo.net/RPM-GPG-KEY-remi'
