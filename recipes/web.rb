@@ -29,6 +29,12 @@ selinux_policy_boolean 'httpd_can_network_connect' do
   value true
 end
 
+#For rhel only
+case node['platform_family']
+when 'rhel', 'fedora'
+  include_recipe 'yum-remi-chef::remi-php73'#actual version installed is based on attributes in web.rb
+end
+
 include_recipe 'php-fpm'
 include_recipe 'chef_nginx::default'
 
