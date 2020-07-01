@@ -22,8 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extend SELinuxPolicy::Helpers
-include_recipe 'selinux_policy::install' if use_selinux
+include_recipe 'selinux_policy::install'
 
 selinux_policy_module 'zabbix_server_setrlimit' do
   content <<-eos
@@ -112,7 +111,7 @@ when 'debian'
 
 when 'rhel'
   package db_vendor == 'postgresql' ? 'zabbix-server-pgsql' : 'zabbix-server-mysql' do
-    action [:install, :reconfig]
+    action [:install]
   end
 end
 

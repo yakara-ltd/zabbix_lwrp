@@ -1,5 +1,4 @@
-extend SELinuxPolicy::Helpers
-include_recipe 'selinux_policy::install' if use_selinux
+include_recipe 'selinux_policy::install'
 
 selinux_policy_module 'zabbix_agent_setrlimit' do
   content <<-eos
