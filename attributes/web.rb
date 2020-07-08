@@ -9,6 +9,12 @@ default['zabbix']['server']['web']['start_servers'] = 2
 default['zabbix']['server']['web']['max_spare_servers'] = 3
 default['zabbix']['server']['web']['process_manager'] = 'dynamic'
 
+default['zabbix']['server']['web']['ssl_ciphers'] \
+  = "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384"
+
+default['zabbix']['server']['web']['ssl_protocols'] \
+  = "TLSv1.2 TLSv1.3"
+
 default['zabbix']['server']['web']['configuration']['php_admin_value[date.timezone]'] = 'UTC'
 default['zabbix']['server']['web']['configuration']['php_admin_flag[display_errors]'] = false
 default['zabbix']['server']['web']['configuration']['php_admin_value[error_reporting]'] = 'E_ALL &amp; ~E_DEPRECATED'

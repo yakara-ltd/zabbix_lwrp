@@ -69,7 +69,9 @@ chef_nginx_site node['zabbix']['server']['web']['server_name'] do
   variables(
     server_name: node['zabbix']['server']['web']['server_name'],
     proxy_listen: node['zabbix']['server']['web']['proxy_listen'],
-    fastcgi_listen: fastcgi_listen
+    fastcgi_listen: fastcgi_listen,
+    ssl_ciphers: node['zabbix']['server']['web']['ssl_ciphers'],
+    ssl_protocols: node['zabbix']['server']['web']['ssl_protocols']
   )
 end
 

@@ -1,11 +1,27 @@
 server {
   listen <%= @proxy_listen %>;
+
   server_name  <%= @server_name %>;
   
   root /usr/share/zabbix;
 
   client_max_body_size 20m;
   client_body_buffer_size 128k;
+
+  ssl_ciphers <%= @ssl_ciphers %>;
+  ssl_protocols <%= @ssl_protocols %>;
+  ssl_prefer_server_ciphers on;
+  ssl_session_cache shared:SSL:10m;
+  ssl_session_timeout 15m;
+  ssl_session_tickets off;
+
+  add_header Strict-Transport-Security "max-age=63072000" always;
+
+  add_header X-Content-Type-Options nosniff;
+  add_header X-XSS-Protection "1; mode=block";
+  add_header X-Frame-Options "DENY";
+  server_tokens off;
+
 
   index index.php;
   
